@@ -17,7 +17,7 @@ The server would then be listening on port 9000
 
 * [Java 8+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Scala 2.12.4](https://www.scala-lang.org/download/)
-* [Sbt 1.1.4](https://www.scala-lang.org/download/)
+* [Sbt 1.1.6](https://www.scala-lang.org/download/)
 
 
 ## Running the tests
