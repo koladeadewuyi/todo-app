@@ -1,16 +1,14 @@
-import model.Alarm.Alarm
-import model.Occurrence._
 import org.joda.time.DateTime
 
 package object model {
 
   object Occurrence extends Enumeration {
-    type Occurrence
+    type Occurrence = Value
     val Daily, Weekly, Monthly, Once = Value
   }
 
   object Alarm extends Enumeration {
-    type Alarm
+    type Alarm = Value
     val Beep, Email, None = Value
   }
 
@@ -19,6 +17,6 @@ package object model {
                   description: Option[String],
                   createdOn: DateTime,
                   dueOn: DateTime,
-                  occurrence: Occurrence = Once,
-                  alarm: Alarm = Alarm.None)
+                  occurrence: Occurrence.Value = Occurrence.Once,
+                  alarm: Alarm.Value = Alarm.None)
 }
