@@ -12,14 +12,22 @@ class TaskController @Inject()(cc: ControllerComponents) extends AbstractControl
   import play.api.data._
 
   val taskForm = Form(
-    "label" -> nonEmptyText
+    "title" -> nonEmptyText
   )
 
   def tasks() = Action { implicit messagesProvider =>
     Ok(views.html.index(Task.all(), taskForm))
   }
 
-  def newTask() = TODO
+  def newTask() = Action { implicit request =>
+    taskForm.bindFromRequest.fold(
+      errors => BadRequest(views.html.index(Task.all(), errors)),
+      title => {
+        Task.create(title)
+        Redirect(routes.TaskController.tasks())
+      }
+    )
+  }
 
   def deleteTask(id: String) = TODO
 

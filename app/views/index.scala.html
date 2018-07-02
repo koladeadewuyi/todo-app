@@ -1,4 +1,4 @@
-@(tasks: List[model.Task], taskForm: Form[String])(implicit messagesProvider: MessagesProvider)
+@(tasks: List[model.Task], taskForm: Form[String])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
 
 @import helper._
 
@@ -16,6 +16,7 @@
     </ul>
     <h2>Add a new task</h2>
     @form(routes.TaskController.newTask) {
+        @CSRF.formField
         @inputText(taskForm("title"))
         <input type="submit" value="Create">
     }
