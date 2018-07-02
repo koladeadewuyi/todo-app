@@ -19,4 +19,12 @@ package object model {
                   dueOn: DateTime,
                   occurrence: Occurrence.Value = Occurrence.Once,
                   alarm: Alarm.Value = Alarm.None)
+
+  object Task {
+    def all(): List[Task] = Nil
+
+    def create(label: String) {}
+
+    def delete(id: Long) {}
+  }
 }
