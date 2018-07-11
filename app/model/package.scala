@@ -1,4 +1,6 @@
 import org.joda.time.DateTime
+import play.api.db._
+import play.api.Play.current
 
 package object model {
 
@@ -21,7 +23,9 @@ package object model {
                   alarm: Alarm.Value = Alarm.None)
 
   object Task {
-    def all(): List[Task] = Nil
+    def all(): List[Task] = DB.withConnection { implicit c =>
+      SQL("select * from task").as(task *)
+    }
 
     def create(label: String) {}
 
