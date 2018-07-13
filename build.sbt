@@ -9,10 +9,15 @@ scalaVersion := "2.12.6"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
-libraryDependencies += guice
+val AnormVersion = "2.6.2"
+val JodaTimeVersion = "2.10"
+val ScalaTestPlayVersion = "4.0.0-M1"
+
+libraryDependencies ++= Seq(guice, jdbc)
 libraryDependencies ++= Seq(
-  "joda-time" % "joda-time" % "2.10",
-  "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.0-M1" % Test
+  "joda-time" % "joda-time" % JodaTimeVersion,
+  "org.playframework.anorm" %% "anorm" % AnormVersion,
+  "org.scalatestplus.play" %% "scalatestplus-play" % ScalaTestPlayVersion % Test
 )
 
 // Adds additional packages into Twirl
